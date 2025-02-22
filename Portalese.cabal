@@ -1,0 +1,83 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           Portalese
+version:        0.1.0.0
+synopsis:       C-based language with extra features and a runtime environment
+description:    Please see the README on GitHub at <https://github.com/ThibautHH/Portalese#readme>
+category:       Programming language
+homepage:       https://github.com/ThibautHH/Portalese#readme
+bug-reports:    https://github.com/ThibautHH/Portalese/issues
+author:         Thibaut Hebert--Henriette
+maintainer:     thibaut_hbt@hotmail.fr
+copyright:      Thibaut Hebert--Henriette
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/ThibautHH/Portalese
+
+library
+  exposed-modules:
+      Portalese.ASEC
+      Portalese.GLaDOS
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable asec
+  main-is: ASEC.hs
+  other-modules:
+      GLaDOS
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -main-is ASEC
+  build-depends:
+      Portalese
+    , base >=4.7 && <5
+  default-language: Haskell2010
+
+executable glados
+  main-is: GLaDOS.hs
+  other-modules:
+      ASEC
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -main-is GLaDOS
+  build-depends:
+      Portalese
+    , base >=4.7 && <5
+  default-language: Haskell2010
+
+test-suite asec-tests
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  hs-source-dirs:
+      test/ASEC
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Portalese
+    , base >=4.7 && <5
+  default-language: Haskell2010
+
+test-suite glados-tests
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  hs-source-dirs:
+      test/GLaDOS
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Portalese
+    , base >=4.7 && <5
+  default-language: Haskell2010
